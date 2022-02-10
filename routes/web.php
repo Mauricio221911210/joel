@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\HomeController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,5 +25,5 @@ use Illuminate\Support\Facades\Route;
 Route::get('/login', [AuthController::class, 'login'])->name('login');
 Route::get('/logout', [AuthController::class , 'logout'])->name('logout');
 Route::post('/authentication', [AuthController::class, 'authentication'])->name('authentication');
-Route::get('/', HomeController::class)->name('welcome')->middleware('guest');
+Route::get('/', [HomeController::class, 'index'])->name('welcome')->middleware('guest');
 Route::get('/home', [SystemController::class, 'index'])->name('home')->middleware('auth');
